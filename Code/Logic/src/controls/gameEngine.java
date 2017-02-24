@@ -1,6 +1,6 @@
 package controls;
 public class gameEngine 
 {
-	//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2; if plr.lvl>enmy.lvl 2xp/2
+	//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2; if plr.lvl>enmy.lvl 2xp/2 if expgain<0,expgain=1
 	//dmg = attackers atk- defenders  def
 }
