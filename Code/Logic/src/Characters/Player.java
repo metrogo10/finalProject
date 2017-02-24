@@ -1,7 +1,8 @@
 package Characters;
 import java.util.ArrayList;
+
+import Gear.Pendant;
 import Items.Consumable;
-import Items.Pendant;
 public class Player extends Character
 {
 	private int lck;

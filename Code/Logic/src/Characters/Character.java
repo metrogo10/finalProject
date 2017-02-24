@@ -12,4 +12,76 @@ public class Character
 	//Gem power is basically mana
 	protected int gp;
 	protected String Name;
+	public int getHp() 
+	{
+		return hp;
+	}
+	public void setHp(int hp) 
+	{
+		this.hp = hp;
+	}
+	public int getLvl() 
+	{
+		return lvl;
+	}
+	public void setLvl(int lvl) 
+	{
+		this.lvl = lvl;
+	}
+	public int getSpd() 
+	{
+		return spd;
+	}
+	public void setSpd(int spd) 
+	{
+		this.spd = spd;
+	}
+	public int getDef() 
+	{
+		return def;
+	}
+	public void setDef(int def) 
+	{
+		this.def = def;
+	}
+	public int getAtk() 
+	{
+		return atk;
+	}
+	public void setAtk(int atk)
+	{
+		this.atk = atk;
+	}
+	public int getExp() 
+	{
+		return exp;
+	}
+	public void setExp(int exp) 
+	{
+		this.exp = exp;
+	}
+	public int getCp() 
+	{
+		return cp;
+	}
+	public void setCp(int cp) 
+	{
+		this.cp = cp;
+	}
+	public int getGp() 
+	{
+		return gp;
+	}
+	public void setGp(int gp) 
+	{
+		this.gp = gp;
+	}
+	public String getName() 
+	{
+		return Name;
+	}
+	public void setName(String name) 
+	{
+		Name = name;
+	}
 }

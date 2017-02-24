@@ -1,0 +1,6 @@
+package Items;
+import Characters.Character;
+public class HealthGem extends Consumable
+{
+	
+}

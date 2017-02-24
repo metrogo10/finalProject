@@ -1,0 +1,13 @@
+package Gear;
+import Characters.Player;
+public class AttackJewl extends Pendant
+{
+	AttackJewl(Player p)
+	{
+		bonus=2;
+		if(isEquiped())
+		{
+			p.setAtk(p.getAtk()+bonus);
+		}
+	}
+}

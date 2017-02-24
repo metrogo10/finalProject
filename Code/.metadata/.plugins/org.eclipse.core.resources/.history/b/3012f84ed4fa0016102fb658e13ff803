@@ -1,0 +1,8 @@
+package Gear;
+public class AttackJewl extends Pendant
+{
+	AttackJewl()
+	{
+		bonus=2;
+	}
+}

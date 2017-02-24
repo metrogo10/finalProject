@@ -1,0 +1,10 @@
+package Items;
+import Characters.Character;
+public class Consumable 
+{
+	private int health;
+	public int Use(Character c)
+	{
+		return c.getHp()+health;
+	}
+}

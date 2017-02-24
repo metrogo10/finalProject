@@ -1,0 +1,8 @@
+package Gear;
+public class DefenseJewl extends Pendant
+{
+	DefenseJewl()
+	{
+		bonus=2;
+	}
+}
