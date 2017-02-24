@@ -59,10 +59,6 @@ public class Player extends Character
 	{
 		ItemInventory.add(item);
 	}
-	public void dropItem(Consumable Item)
-	{
-		ItemInventory.remove(Item);
-	}	
 	public void getPendantInventory() 
 	{
 		if(pendantInventory!=null)
@@ -77,9 +73,5 @@ public class Player extends Character
 	public void setPendantInventory(Pendant pendant) 
 	{
 		pendantInventory.add(pendant);
-	}
-	public void dropPendant(Pendant pendant)
-	{
-		pendantInventory.remove(pendant);
 	}
 }
