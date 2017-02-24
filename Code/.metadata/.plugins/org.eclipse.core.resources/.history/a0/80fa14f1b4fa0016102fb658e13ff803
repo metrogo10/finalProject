@@ -1,0 +1,16 @@
+package Characters;
+public class BouncingBoulder extends Enemies
+{
+	BouncingBoulder()
+	{
+		hp=
+		cp=
+		gp=
+		spd=
+		def=
+		atk=
+		exp=
+		lvl=
+		name=
+	}
+}

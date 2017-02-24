@@ -1,0 +1,18 @@
+package Characters;
+import java.util.ArrayList;
+import Items.Consumable;
+import Items.Pendant;
+public class Player extends Character
+{
+	private int luck;
+	private int jump;
+	//pendant power is used to equip pendants
+	private int pp;
+	private ArrayList<Pendant> equipedPendants;
+	private ArrayList<Consumable> ItemInventory;
+	private ArrayList<Pendant> pendantInventory;
+	Player(String name)
+	{
+		
+	}
+}

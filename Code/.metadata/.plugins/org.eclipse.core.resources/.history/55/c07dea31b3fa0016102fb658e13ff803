@@ -1,0 +1,17 @@
+package Characters;
+public class PebbleMonster extends Enemies
+{
+	PebbleMonster()
+	{
+		hp=num1.nextInt(5)+1;
+		cp=0;
+		gp=0;
+		spd=num1.nextInt(3);
+		def=num1.nextInt(2);
+		atk=num1.nextInt(2)+1;
+		exp=num1.nextInt(5)+1;
+		lvl=num1.nextInt(3)+1;
+		int num=num1.nextInt(5)+1;
+		Name="lilrock";
+	}
+}
