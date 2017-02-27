@@ -5,7 +5,7 @@ public class Enemies extends Character
 {
 	protected Random num1 = new Random();
 	private ArrayList<Enemies> Encounter;
-	protected ArrayList GenerateEncounter()
+	public ArrayList GenerateEncounter()
 	{
 		Enemies m1=this;
 		m1.Encounter.removeAll(Encounter);
@@ -27,6 +27,10 @@ public class Enemies extends Character
             default: break;
 			}
 		}
+		return Encounter;
+	}
+	public ArrayList<Enemies> getEncounter()
+	{
 		return Encounter;
 	}	
 }

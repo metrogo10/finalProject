@@ -1,6 +1,8 @@
 package Characters;
 public class Character 
 {
+	protected int posx;
+	protected int posy;
 	protected int hp;
 	protected int lvl;
 	protected int spd;
@@ -83,5 +85,21 @@ public class Character
 	public void setName(String name) 
 	{
 		Name = name;
+	}
+	public int getPosx() 
+	{
+		return posx;
+	}
+	public void setPosx(int posx) 
+	{
+		this.posx = posx;
+	}
+	public int getPosy() 
+	{
+		return posy;
+	}
+	public void setPosy(int posy) 
+	{
+		this.posy = posy;
 	}
 }

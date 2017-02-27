@@ -12,7 +12,7 @@ public class Player extends Character
 	private ArrayList<Pendant> equipedPendants;
 	private ArrayList<Consumable> ItemInventory;
 	private ArrayList<Pendant> pendantInventory;
-	Player(String name)
+	public Player(String name)
 	{
 		lvl=1;
 		hp=10;
@@ -82,5 +82,22 @@ public class Player extends Character
 	public void dropPendant(Pendant pendant)
 	{
 		pendantInventory.remove(pendant);
+	}
+	public void GainExp(int xp)
+	{
+		this.exp+=xp;
+		if(this.exp>=100)
+		{
+			this.exp-=100;
+			this.lvl+=1;
+			LevelUp();
+		}
+	}
+	private void LevelUp()
+	{
+		System.out.println("Choose one to increase");
+		System.out.println("Health=1");
+		System.out.println("GemPower");
+		System.out.println("Pendant Points");
 	}
 }

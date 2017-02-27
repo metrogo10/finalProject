@@ -1,0 +1,29 @@
+package controls;
+import java.util.ArrayList;
+import Characters.Enemies;
+import Characters.Player;
+public class Combat 
+{
+	ArrayList<Enemies> encounter;
+	Player p;
+	Combat(Enemies E, Player p)
+	{
+		E.GenerateEncounter();
+		encounter=E.getEncounter();
+		this.p=p;
+	}
+	//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2; 
+	int Experiance()
+	{
+		int expgain;
+		for(int i=0;i<encounter.size();i++)
+		{
+			int x=encounter.get(i).getLvl()-p.getLvl()+encounter.get(i).getExp();
+			if(x<=0)
+			{
+				x+=1;
+			}
+		}
+		return 0;
+	}
+}

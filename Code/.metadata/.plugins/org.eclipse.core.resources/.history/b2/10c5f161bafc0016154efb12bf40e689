@@ -1,0 +1,9 @@
+package controls;
+import Characters.Enemies;
+public class Combat 
+{
+	Combat(Enemies E)
+	{
+		
+	}
+}

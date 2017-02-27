@@ -1,0 +1,10 @@
+package controls;
+import Characters.Enemies;
+public class Combat 
+{
+	Combat(Enemies E)
+	{
+		E.GenerateEncounter();
+		E.getEncounter();
+	}
+}
