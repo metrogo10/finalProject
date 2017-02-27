@@ -6,12 +6,10 @@ public class Combat
 {
 	ArrayList<Enemies> encounter;
 	Player p;
-	Enemies e;
 	Combat(Enemies E, Player p)
 	{
-		this.e=E;
-		e.GenerateEncounter();
-		encounter=e.getEncounter();
+		E.GenerateEncounter();
+		encounter=E.getEncounter();
 		this.p=p;
 	}
 	int Experiance()

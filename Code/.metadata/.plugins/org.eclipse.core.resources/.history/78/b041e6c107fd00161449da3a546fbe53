@@ -17,7 +17,7 @@ public class gameEngine
 		Player p= new Player(x);
 		if(p.getPosx()==e.getPosx()&&p.getPosy()==e.getPosy())
 		{
-			Combat C= new Combat(e, p);
+			Combat C= new Combat(e);
 		}
 	}
 	String prompt()
