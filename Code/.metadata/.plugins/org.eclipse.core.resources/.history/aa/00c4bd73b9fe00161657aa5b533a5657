@@ -15,12 +15,7 @@ public class Combat
 		encounter=e.getEncounter();
 		this.p=p;
 	}
-	public void fight()
-	{
-		do{
-			
-		}while(Combat);
-	} 
+	
 	int Experiance()
 	{
 		int expgain=0;

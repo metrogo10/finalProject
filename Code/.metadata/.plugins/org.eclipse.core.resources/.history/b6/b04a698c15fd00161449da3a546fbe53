@@ -7,7 +7,6 @@ public class Combat
 	ArrayList<Enemies> encounter;
 	Player p;
 	Enemies e;
-	Boolean Combat=true;
 	Combat(Enemies E, Player p)
 	{
 		this.e=E;
@@ -15,12 +14,6 @@ public class Combat
 		encounter=e.getEncounter();
 		this.p=p;
 	}
-	public void fight()
-	{
-		do{
-			
-		}while(Combat);
-	} 
 	int Experiance()
 	{
 		int expgain=0;
@@ -46,21 +39,12 @@ public class Combat
 		}
 		return expgain;
 	}
-	boolean win()
+	void win()
 	{ 
 		boolean win = false;
-		int x=0;
 		for (int i=0;i<encounter.size();i++)
 		{
-			if (encounter.get(i).getHp()<=0)
-			{
-				x++;
-			}
+			
 		}
-		if(x==encounter.size())
-		{
-			win=true;
-		}
-		return win;
 	}
 }
