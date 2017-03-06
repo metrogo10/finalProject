@@ -1,8 +1,0 @@
-package Characters;
-public class BouncingBoulders extends Enemies
-{
-	BouncingBoulders()
-	{
-		
-	}
-}

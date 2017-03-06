@@ -1,5 +1,0 @@
-package controls;
-public class gameEngine 
-{
-//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2; if plr.lvl>enmy.lvl 2xp/2
-}
