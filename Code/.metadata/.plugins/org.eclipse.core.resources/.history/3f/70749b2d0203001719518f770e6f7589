@@ -1,0 +1,17 @@
+package controls;
+
+import javafx.stage.Stage;
+
+public class Driver
+{
+	public static void main(String[] args)
+	{
+		gameEngine G = new gameEngine();
+		Stage s = new Stage();
+		try {
+			G.start(s);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
