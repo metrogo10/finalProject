@@ -1,0 +1,13 @@
+package controls;
+import FX.window;
+import javafx.stage.Stage;
+public class Driver
+{
+	public static void main(String[] args)
+	{
+		gameEngine G = new gameEngine();
+		Stage s = new Stage();
+		window w = new window();
+		w.start(s);
+	}
+}

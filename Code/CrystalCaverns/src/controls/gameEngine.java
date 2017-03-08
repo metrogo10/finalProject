@@ -19,15 +19,15 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-public class gameEngine extends Application
+public class gameEngine
 {
 	//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2;
 	//if plr.lvl>enmy.lvl exp/2 if expgain<0,expgain=1 exp*numofenemies
 	//dmg = attackers' atk- defenders'  def
 	// first to go is either the one that got first strike or the team with the highest average spd.
 	private BufferedReader Userinput1 = new BufferedReader (new InputStreamReader(System.in));
-	Player p;
-	gameEngine()
+	private Player p;
+	public gameEngine()
 	{	String x=prompt();
 		Enemy e= new Enemy();
 		p= new Player(x);
@@ -67,63 +67,12 @@ public class gameEngine extends Application
 		}while (runLoop);
 		return bob;
 	}
-	@Override
-	public void start(Stage theStage)
+	public Player getP()
 	{
-		 theStage.setTitle( "Collect the Money Bags!" );
-	        Group root = new Group();
-	        Scene theScene = new Scene( root );
-	        theStage.setScene( theScene );
-	        Canvas canvas = new Canvas( 512, 512 );
-	        root.getChildren().add( canvas );
-	        ArrayList<String> input = new ArrayList<String>();
-	        theScene.setOnKeyPressed(
-	            new EventHandler<KeyEvent>()
-	            {
-	                public void handle(KeyEvent e)
-	                {
-	                    String code = e.getCode().toString();
-	                    if ( !input.contains(code) )
-	                        input.add( code );
-	                }
-	            });
-	        theScene.setOnKeyReleased(
-	            new EventHandler<KeyEvent>()
-	            {
-	                public void handle(KeyEvent e)
-	                {
-	                    String code = e.getCode().toString();
-	                    input.remove( code );
-	                }
-	            });
-	        GraphicsContext gc = canvas.getGraphicsContext2D();
-	        Font theFont = Font.font( "Helvetica", FontWeight.BOLD, 24 );
-	        gc.setFont( theFont );
-	        gc.setFill( Color.GREEN );
-	        gc.setStroke( Color.BLACK );
-	        gc.setLineWidth(1);
-	        ArrayList<Sprite> moneybagList = new ArrayList<Sprite>();
-	        for (int i = 0; i < 15; i++)
-	        {
-	        }
-	        new AnimationTimer()
-	        {
-	        	  public void handle(long currentNanoTime)
-	        	    {
-	        		  	long lastNanoTime = new Long(System.nanoTime());
-	        	        double elapsedTime = (currentNanoTime - lastNanoTime) / 1000000000.0;
-	        	        lastNanoTime = currentNanoTime;
-	        	        p.setVelocity(0,0);
-	        	        if (input.contains("LEFT"))
-	        	            p.addVelocity(-50,0);
-	        	        if (input.contains("RIGHT"))
-	        	            p.addVelocity(50,0);
-	        	        if (input.contains("UP"))
-	        	            p.addVelocity(0,-50);
-	        	        if (input.contains("DOWN"))
-	        	           p.addVelocity(0,50);
-	        	        p.update(elapsedTime);
-	            }
-	        }.start();
-	    }
+		return p;
+	}
+	public void setP(Player p)
+	{
+		this.p = p;
+	}
 	}

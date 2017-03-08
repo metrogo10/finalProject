@@ -58,4 +58,61 @@ public class Sprite
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }
+	public double getPosX()
+	{
+		return posX;
+	}
+	public void setPosX(double posX)
+	{
+		this.posX = posX;
+	}
+	public double getPosY()
+	{
+		return posY;
+	}
+	public void setPosY(double posY)
+	{
+		this.posY = posY;
+	}
+	public double getSpdX()
+	{
+		return spdX;
+	}
+	public void setSpdX(double spdX)
+	{
+		this.spdX = spdX;
+	}
+	public double getSpdY()
+	{
+		return spdY;
+	}
+	public void setSpdY(double spdY)
+	{
+		this.spdY = spdY;
+	}
+	public double getWidth()
+	{
+		return width;
+	}
+	public void setWidth(double width)
+	{
+		this.width = width;
+	}
+	public double getHeight()
+	{
+		return height;
+	}
+	public void setHeight(double height)
+	{
+		this.height = height;
+	}
+	public Image getImage()
+	{
+		return image;
+	}
+	public void setSize(double width, double height)
+	{
+		this.width=width;
+		this.height=height;
+	}
 }

@@ -25,8 +25,11 @@ public class Player extends Character
 		lck=1;
 		jmp=1;
 		Name=name;
+		this.setImage("/Pictures/player.png");
+		this.setPosition(0, 0);
+		this.setSize(100, 100);
 	}
-	public void getEquipedPendants() 
+	public void getEquipedPendants()
 	{
 		if(equipedPendants!=null)
 		{
@@ -37,7 +40,7 @@ public class Player extends Character
 		}
 		}
 	}
-	public void setEquipedPendants(Pendant Pendant) 
+	public void setEquipedPendants(Pendant Pendant)
 	{
 		equipedPendants.add(Pendant);
 	}
@@ -45,7 +48,7 @@ public class Player extends Character
 	{
 		equipedPendants.remove(pendant);
 	}
-	public void getItemInventory() 
+	public void getItemInventory()
 	{
 		if(ItemInventory!=null)
 		{
@@ -56,15 +59,15 @@ public class Player extends Character
 		}
 		}
 	}
-	public void setItemInventory(Consumable item) 
+	public void setItemInventory(Consumable item)
 	{
 		ItemInventory.add(item);
 	}
 	public void dropItem(Consumable Item)
 	{
 		ItemInventory.remove(Item);
-	}	
-	public void getPendantInventory() 
+	}
+	public void getPendantInventory()
 	{
 		if(pendantInventory!=null)
 		{
@@ -75,7 +78,7 @@ public class Player extends Character
 		}
 		}
 	}
-	public void setPendantInventory(Pendant pendant) 
+	public void setPendantInventory(Pendant pendant)
 	{
 		pendantInventory.add(pendant);
 	}

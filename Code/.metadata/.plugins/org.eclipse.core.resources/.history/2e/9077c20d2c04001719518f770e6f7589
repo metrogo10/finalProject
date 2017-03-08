@@ -1,0 +1,89 @@
+package FX;
+import java.util.ArrayList;
+import Characters.Player;
+import controls.Sprite;
+import controls.gameEngine;
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+public class window extends Application
+{
+	private gameEngine G = new gameEngine();
+	public static void main(String[] args)
+    {
+        launch(args);
+    }
+	public void start(Stage theStage)
+	{
+		Image image = new Image(window.class.getResourceAsStream("/Pictures/player.png"));
+        ImageView iv1 = new ImageView();
+        iv1.setImage(image);
+        theStage.setTitle("CRYSTAL CAVERNS");
+        Group root = new Group();
+        Scene theScene = new Scene( root );
+        theStage.setScene( theScene );
+        HBox box = new HBox();
+        box.getChildren().add(iv1);
+        Canvas canvas = new Canvas( 512, 512 );
+        root.getChildren().add( canvas );
+        G.getP().setPosition(0, 0);
+        ArrayList<String> input = new ArrayList<String>();
+        theScene.setOnKeyPressed
+        (
+        new EventHandler<KeyEvent>()
+    	{
+       		public void handle(KeyEvent e)
+                {
+                    String code = e.getCode().toString();
+                    if ( !input.contains(code) )
+                    {
+                    	input.add( code );
+                    }
+                }
+            }
+        );
+        theScene.setOnKeyReleased
+        (
+            new EventHandler<KeyEvent>()
+            {
+                public void handle(KeyEvent e)
+                {
+                    String code = e.getCode().toString();
+                    input.remove( code );
+                }
+            }
+        );
+	        ArrayList<Sprite> Characters = new ArrayList<Sprite>();
+	        for (int i = 0; i < 15; i++)
+	        {
+	        }
+	        new AnimationTimer()
+	        {
+	        	  public void handle(long currentNanoTime)
+	        	    {
+	        		  	long lastNanoTime = new Long(System.nanoTime());
+	        	        double elapsedTime = (currentNanoTime - lastNanoTime) / 1000000000.0;
+	        	        lastNanoTime = currentNanoTime;
+	        	        G.getP().setVelocity(0,0);
+	        	        if (input.contains("LEFT"))
+	        	            G.getP().addVelocity(-50,0);
+	        	        if (input.contains("RIGHT"))
+	        	        	G.getP().addVelocity(50,0);
+	        	        if (input.contains("UP"))
+	        	        	G.getP().addVelocity(0,-50);
+	        	        if (input.contains("DOWN"))
+	        	        	G.getP().addVelocity(0,50);
+	        	        G.getP().update(elapsedTime);
+	            }
+	        }.start();
+	        theStage.show();
+	    }
+	}
