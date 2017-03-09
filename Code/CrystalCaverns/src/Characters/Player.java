@@ -1,12 +1,15 @@
 package Characters;
 import java.util.ArrayList;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import Gear.Pendant;
 import Items.Consumable;
+import Math.IntValue;
 public class Player extends Character
 {
 	private int lck;
-	private int jmp;
+	private double jmp;
+	private IntValue timer=new IntValue(0);
 	//pendant power is used to equip pendants
 	private int pp;
 	private ArrayList<Pendant> equipedPendants;
@@ -102,5 +105,9 @@ public class Player extends Character
 		System.out.println("Health=1");
 		System.out.println("GemPower");
 		System.out.println("Pendant Points");
+	}
+	public void stopfall()
+	{
+		this.setSpdY(0);
 	}
 }

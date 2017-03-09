@@ -4,12 +4,11 @@ import java.util.Random;
 public class Enemy extends Character
 {
 	protected Random num1 = new Random();
-	private ArrayList<Enemy> Encounter;
+	private ArrayList<Enemy> Encounter=new ArrayList();
 	public ArrayList GenerateEncounter()
 	{
 		Enemy m1=this;
 		m1.Encounter.removeAll(Encounter);
-		Encounter=new ArrayList();
 		Encounter.add(m1);
 		int num=num1.nextInt(3);
 		for (int i=0; i<num; i++)

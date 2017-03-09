@@ -1,0 +1,5 @@
+package scenery;
+public class Ceiling extends platform
+{
+	public Ceiling
+}

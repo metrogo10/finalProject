@@ -9,10 +9,10 @@ import javafx.geometry.Rectangle2D;
 public class Sprite
 {
     private Image image;
-    private double posX;
-    private double posY;
-    private double spdX;
-    private double spdY;
+    private double posX=0;
+    private double posY=0;
+    private double spdX=0;
+    private double spdY=0;
     private double width;
     private double height;
     public void setImage(Image i)
@@ -40,6 +40,7 @@ public class Sprite
     {
         spdX += x;
         spdY += y;
+
     }
     public void update(double time)
     {
@@ -56,7 +57,7 @@ public class Sprite
     }
     public boolean intersects(Sprite s)
     {
-        return s.getBoundary().intersects( this.getBoundary() );
+        return s.getBoundary().intersects( this.getBoundary());
     }
 	public double getPosX()
 	{

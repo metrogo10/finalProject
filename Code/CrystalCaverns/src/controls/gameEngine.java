@@ -4,21 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import Characters.Enemy;
 import Characters.Player;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
 public class gameEngine
 {
 	//exp gain = (enmy.lvl-plr.lvl+enmy.exp)+1 if plr.lvl<enmy.lvl exp*2;
@@ -28,16 +13,17 @@ public class gameEngine
 	private BufferedReader Userinput1 = new BufferedReader (new InputStreamReader(System.in));
 	private Player p;
 	public gameEngine()
-	{	String x=prompt();
+	{
+//		String x=prompt();
 		Enemy e= new Enemy();
-		p= new Player(x);
+		p= new Player("Jack");
 		System.out.println(p.getName());
 //		if(p.intersects(e));
 //		{
 //			Combat C= new Combat(e, p);
 //		}
 	}
-	String prompt()
+	private String prompt()
 	{
 		boolean runLoop=false;
 		System.out.println("Welcome to Crystal Caverns. please give a name for your hero.");

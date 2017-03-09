@@ -1,5 +1,5 @@
 package scenery;
-public class platform 
+import controls.Sprite;
+public class platform extends Sprite
 {
-
 }

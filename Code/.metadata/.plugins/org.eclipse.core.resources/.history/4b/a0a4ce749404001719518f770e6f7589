@@ -1,0 +1,119 @@
+package controls;
+import javafx.scene.image.Image;
+import javafx.scene.canvas.GraphicsContext;
+
+import java.util.ArrayList;
+
+import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
+public class Sprite
+{
+    private Image image;
+    private double posX=0;
+    private double posY=0;
+    private double spdX=0;
+    private double spdY=0;
+    private double width;
+    private double height;
+    public void setImage(Image i)
+    {
+        image = i;
+        width = i.getWidth();
+        height = i.getHeight();
+    }
+    public void setImage(String filename)
+    {
+        Image i = new Image(filename);
+        setImage(i);
+    }
+    public void setPosition(double x, double y)
+    {
+        posX = x;
+        posY = y;
+    }
+    public void setVelocity(double x, double y)
+    {
+        spdX = x;
+        spdY = y;
+    }
+    public void addVelocity(double x, double y)
+    {
+        spdX += x;
+        spdY += y;
+
+    }
+    public void update(double time)
+    {
+        posX += spdX * time;
+        posY += spdY * time;
+    }
+    public void render(GraphicsContext gc)
+    {
+        gc.drawImage( image, posX, posY );
+    }
+    public Rectangle2D getBoundary()
+    {
+        return new Rectangle2D(posX,posY,width,height);
+    }
+    public boolean intersects(Sprite s)
+    {
+        return s.getBoundary().intersects( this.getBoundary() );
+    }
+	public double getPosX()
+	{
+		return posX;
+	}
+	public void setPosX(double posX)
+	{
+		this.posX = posX;
+	}
+	public double getPosY()
+	{
+		return posY;
+	}
+	public void setPosY(double posY)
+	{
+		this.posY = posY;
+	}
+	public double getSpdX()
+	{
+		return spdX;
+	}
+	public void setSpdX(double spdX)
+	{
+		this.spdX = spdX;
+	}
+	public double getSpdY()
+	{
+		return spdY;
+	}
+	public void setSpdY(double spdY)
+	{
+		this.spdY = spdY;
+	}
+	public double getWidth()
+	{
+		return width;
+	}
+	public void setWidth(double width)
+	{
+		this.width = width;
+	}
+	public double getHeight()
+	{
+		return height;
+	}
+	public void setHeight(double height)
+	{
+		this.height = height;
+	}
+	public Image getImage()
+	{
+		return image;
+	}
+	public void setSize(double width, double height)
+	{
+		this.width=width;
+		this.height=height;
+	}
+}
