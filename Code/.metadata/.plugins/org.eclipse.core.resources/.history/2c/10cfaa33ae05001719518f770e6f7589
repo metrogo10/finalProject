@@ -22,8 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -101,10 +99,6 @@ public class window extends Application
         Sprite pf = new Sprite();
         pf.setImage("/Pictures/platform.png");
         pf.setPosition(240, 300);
-        String path = window.class.getResource("/Pictures/mpfirst.mp3").toString();
-        Media media = new Media(path);
-        MediaPlayer mp = new MediaPlayer(media);
-        mp.play();
         input.add("go");
         LongValue lastNanoTime = new LongValue(System.nanoTime());
 	        new AnimationTimer()
@@ -214,8 +208,6 @@ public class window extends Application
 	        					}
 	        					expgain.value+=x;
 	        				}
-	        				if(!cp.getEncounter().isEmpty())
-		        	        {
 	        		        new AnimationTimer()
 	        		        {
 	        		        	  public void handle(long currentNanoTime)
@@ -238,7 +230,6 @@ public class window extends Application
 	        		        	        	cp.getEncounter().get(i).setPosition(x, y);
 	        		        	        	cp.getEncounter().get(i).render(gc);
 	        		        	        }
-
 	        		        	        input.add("Pturn");
 	        		        	        if(input.contains("Pturn"))
 	        		        	        {
@@ -322,15 +313,12 @@ public class window extends Application
 	        		        	        		cp.getP().getItemInventory().Use(cp.getP());
 	        		        	        	}
 	        		        	        }
-	        		        	        gc.setFill( Color.RED );
-	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp()+" Atk: "+cp.getP().getAtk());
-	        		        	        String en =(cp.getE().getName()+" hp:"+cp.getE().getHp()+" atk:"+cp.getE().getAtk()+" def:"+cp.getE().getDef());
+	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp());
 	        		        	        gc.fillText(hp, 30, 350);
 	        		        	        input.add("Pturn");
 	        		        	    }
 	        		        }.start();
 	        		        theStage.show();
-	        		        }
 	        	        }
 	        	        G.getP().update(elapsedTime);
 	        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());

@@ -22,8 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -57,15 +55,6 @@ public class window extends Application
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.drawImage(G.getP().getImage(), 0, 0);
         //
-        Sprite s1 = new Sprite();
-        s1.setImage("/Pictures/Background2.png");
-        s1.setPosition(0, 0);
-        Sprite s2 = new Sprite();
-        s2.setImage("/Pictures/Background1.png");
-        s2.setPosition(0, 0);
-        floor f1 = new floor();
-        f1.setImage("/Pictures/floor2.png");
-        f1.setPosition(0, 480);
         ArrayList<String> input = new ArrayList<String>();
         theScene.setOnKeyPressed
         (
@@ -98,13 +87,6 @@ public class window extends Application
         wr.setPosition(480, 0);
         c.setPosition(0, 0);
         f.setPosY(480);
-        Sprite pf = new Sprite();
-        pf.setImage("/Pictures/platform.png");
-        pf.setPosition(240, 300);
-        String path = window.class.getResource("/Pictures/mpfirst.mp3").toString();
-        Media media = new Media(path);
-        MediaPlayer mp = new MediaPlayer(media);
-        mp.play();
         input.add("go");
         LongValue lastNanoTime = new LongValue(System.nanoTime());
 	        new AnimationTimer()
@@ -128,7 +110,7 @@ public class window extends Application
 	        	        {
 	        	        	G.getP().addVelocity(0,30);
 	        	        }
-	        	        if(G.getP().intersects(f)||(G.getP().intersects(pf)))
+	        	        if(G.getP().intersects(f))
 	        	        {
 	        	        	if(G.getP().getSpdY()>0)
 	        	        	{
@@ -140,7 +122,7 @@ public class window extends Application
 		        	        }
 	        	        }
 	        	        }
-	        	        if(G.getP().intersects(f)||(G.getP().intersects(pf)))
+	        	        if(G.getP().intersects(f))
 	        	        {
 	        	        	if(G.getP().getSpdY()>0)
 	        	        	{
@@ -214,8 +196,6 @@ public class window extends Application
 	        					}
 	        					expgain.value+=x;
 	        				}
-	        				if(!cp.getEncounter().isEmpty())
-		        	        {
 	        		        new AnimationTimer()
 	        		        {
 	        		        	  public void handle(long currentNanoTime)
@@ -223,8 +203,7 @@ public class window extends Application
 	        		        	        double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
 	        		        	        lastNanoTime.value = currentNanoTime;
 	        		        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-	        		        	        s2.render(gc);
-	        		        	        f1.render(gc);
+	        		        	        f.render(gc);
 	        		        	        attack.render(gc);
 	        		        	        Defend.render(gc);
 	        		        	        Item.render(gc);
@@ -238,7 +217,6 @@ public class window extends Application
 	        		        	        	cp.getEncounter().get(i).setPosition(x, y);
 	        		        	        	cp.getEncounter().get(i).render(gc);
 	        		        	        }
-
 	        		        	        input.add("Pturn");
 	        		        	        if(input.contains("Pturn"))
 	        		        	        {
@@ -271,7 +249,7 @@ public class window extends Application
 	        		        	        		{
 	        		        	        		cp.getP().setHp(cp.getP().getHp()-dmg);
 	        		        	        		}
-	        		        	        		if(!cp.getEncounter().isEmpty()&&cp.getEncounter().get(n.value).getHp()<=0)
+	        		        	        		if(cp.getEncounter().get(n.value).getHp()<=0)
 	        		        	        		{
 	        		        	        			cp.getEncounter().remove(n.value);
 	        		        	        		}
@@ -296,7 +274,6 @@ public class window extends Application
 	        		        	        	}
 	        		        	        	if(input.contains("S"))
 	        		        	        	{
-	        		        	        		input.remove("Pturn");
 	        		        	        		int dmg =cp.getE().getAtk()-(cp.getP().getDef()+1);
 	        		        	        		if(input.contains("B"))
 	        		        	        		{
@@ -316,26 +293,19 @@ public class window extends Application
 	        		        	        }
 	        		        	        if(input.contains("D"))
 	        		        	        {
-	        		        	        	input.remove("Pturn");
 	        		        	        	if(cp.getP().getItemInventory()!=null)
 	        		        	        	{
 	        		        	        		cp.getP().getItemInventory().Use(cp.getP());
 	        		        	        	}
 	        		        	        }
-	        		        	        gc.setFill( Color.RED );
-	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp()+" Atk: "+cp.getP().getAtk());
-	        		        	        String en =(cp.getE().getName()+" hp:"+cp.getE().getHp()+" atk:"+cp.getE().getAtk()+" def:"+cp.getE().getDef());
+	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp());
 	        		        	        gc.fillText(hp, 30, 350);
-	        		        	        input.add("Pturn");
 	        		        	    }
 	        		        }.start();
 	        		        theStage.show();
-	        		        }
 	        	        }
 	        	        G.getP().update(elapsedTime);
 	        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-	        	        s1.render(gc);
-	        	        pf.render(gc);
 	        	        G.getP().render(gc);
 	        	        wl.render(gc);
 	        	        wr.render(gc);

@@ -23,8 +23,8 @@ public class Player extends Character
 		gp=5;
 		cp=1;
 		spd=2;
-		atk=2;
-		def=2;
+		atk=1;
+		def=1;
 		exp=0;
 		lck=1;
 		jmp=1;

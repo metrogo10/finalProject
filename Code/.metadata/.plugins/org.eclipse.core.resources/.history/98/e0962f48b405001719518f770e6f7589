@@ -101,8 +101,7 @@ public class window extends Application
         Sprite pf = new Sprite();
         pf.setImage("/Pictures/platform.png");
         pf.setPosition(240, 300);
-        String path = window.class.getResource("/Pictures/mpfirst.mp3").toString();
-        Media media = new Media(path);
+        Media media = new Media("/Pictures/mpfirst.mp3");
         MediaPlayer mp = new MediaPlayer(media);
         mp.play();
         input.add("go");
@@ -324,7 +323,6 @@ public class window extends Application
 	        		        	        }
 	        		        	        gc.setFill( Color.RED );
 	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp()+" Atk: "+cp.getP().getAtk());
-	        		        	        String en =(cp.getE().getName()+" hp:"+cp.getE().getHp()+" atk:"+cp.getE().getAtk()+" def:"+cp.getE().getDef());
 	        		        	        gc.fillText(hp, 30, 350);
 	        		        	        input.add("Pturn");
 	        		        	    }

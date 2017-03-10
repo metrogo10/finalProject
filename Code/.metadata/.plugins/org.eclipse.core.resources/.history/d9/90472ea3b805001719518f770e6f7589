@@ -324,7 +324,6 @@ public class window extends Application
 	        		        	        }
 	        		        	        gc.setFill( Color.RED );
 	        		        	        String hp = (cp.getP().getName()+" hp:"+cp.getP().getHp()+" exp:"+cp.getP().getExp()+" Atk: "+cp.getP().getAtk());
-	        		        	        String en =(cp.getE().getName()+" hp:"+cp.getE().getHp()+" atk:"+cp.getE().getAtk()+" def:"+cp.getE().getDef());
 	        		        	        gc.fillText(hp, 30, 350);
 	        		        	        input.add("Pturn");
 	        		        	    }
