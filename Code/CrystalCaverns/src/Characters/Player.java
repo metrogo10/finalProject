@@ -7,6 +7,7 @@ import Items.Consumable;
 import Math.IntValue;
 public class Player extends Character
 {
+	private boolean alive;
 	private int lck;
 	private double jmp;
 	private IntValue timer=new IntValue(0);
@@ -51,16 +52,18 @@ public class Player extends Character
 	{
 		equipedPendants.remove(pendant);
 	}
-	public void getItemInventory()
+	public Consumable getItemInventory()
 	{
 		if(ItemInventory!=null)
 		{
-		for(int i=0; i<ItemInventory.size(); i++)
-		{
-			// change to screen display later
-			System.out.println(ItemInventory.get(i));
+			return ItemInventory.get(0);
+//		for(int i=0; i<ItemInventory.size(); i++)
+//		{
+//			// change to screen display later
+//			System.out.println(ItemInventory.get(i))
+//		}
 		}
-		}
+		return null;
 	}
 	public void setItemInventory(Consumable item)
 	{
@@ -109,5 +112,13 @@ public class Player extends Character
 	public void stopfall()
 	{
 		this.setSpdY(0);
+	}
+	public boolean isalive()
+	{
+		return alive;
+	}
+	public void setAlive(boolean alive)
+	{
+		this.alive = alive;
 	}
 }

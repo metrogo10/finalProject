@@ -2,26 +2,50 @@ package controls;
 import java.util.ArrayList;
 import Characters.Enemy;
 import Characters.Player;
-public class Combat
+import Math.LongValue;
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+public class Combat extends Application
 {
 	ArrayList<Enemy> encounter;
 	Player p;
 	Enemy e;
 	Boolean Combat=true;
-	Combat(Enemy E, Player p)
+	public Combat(Enemy E, Player p)
 	{
 		this.e=E;
 		e.GenerateEncounter();
 		encounter=e.getEncounter();
 		this.p=p;
 	}
-	public void fight()
+	public boolean fight()
 	{
-		do{
-
-		}while(Combat);
+			if(win())
+			{
+				p.GainExp(Experiance());
+				Combat=false;
+			}
+			if (p.getHp()<=0)
+			{
+				Combat=false;
+			}
+		return win();
 	}
-	int Experiance()
+	public ArrayList<Enemy> getEncounter() {
+		return encounter;
+	}
+	public Player getP()
+	{
+		return p;
+	}
+	public int Experiance()
 	{
 		int expgain=0;
 		for(int i=0;i<encounter.size();i++)
@@ -46,7 +70,7 @@ public class Combat
 		}
 		return expgain;
 	}
-	boolean win()
+	public boolean win()
 	{
 		boolean win = false;
 		int x=0;
@@ -62,5 +86,44 @@ public class Combat
 			win=true;
 		}
 		return win;
+	}
+	@Override
+	public void start(Stage theStage)
+	{
+		theStage.setTitle("CRYSTAL CAVERNS");
+        Group root = new Group();
+        Scene theScene = new Scene( root );
+        theStage.setScene( theScene );
+        Canvas canvas = new Canvas( 512, 512 );
+        root.getChildren().add( canvas );
+        //
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        Sprite attack= new Sprite();
+        attack.setImage("/Pictures/Attack.png");
+        attack.setPosition(0, 0);
+        p.setPosition(36, 380);
+        e.setPosition(380, 380);
+        LongValue lastNanoTime = new LongValue(System.nanoTime());
+        new AnimationTimer()
+        {
+        	  public void handle(long currentNanoTime)
+        	    {
+        	        double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+        	        lastNanoTime.value = currentNanoTime;
+        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        	        attack.render(gc);
+        	        p.render(gc);
+        	        e.render(gc);
+        	    }
+        }.start();
+        theStage.show();
+	}
+	public Enemy getE()
+	{
+		return e;
+	}
+	public void setE(Enemy e)
+	{
+		this.e = e;
 	}
 }

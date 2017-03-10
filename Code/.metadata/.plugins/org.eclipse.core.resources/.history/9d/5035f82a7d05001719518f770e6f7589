@@ -1,0 +1,235 @@
+package FX;
+import java.util.ArrayList;
+
+import Characters.PebbleMonster;
+import Characters.Player;
+import Math.LongValue;
+import controls.Combat;
+import controls.Sprite;
+import controls.gameEngine;
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import scenery.Ceiling;
+import scenery.floor;
+import scenery.wallL;
+import scenery.wallR;
+public class window extends Application
+{
+	private gameEngine G = new gameEngine();
+	private floor f = new floor();
+	private wallL wl= new wallL();
+	private wallR wr= new wallR();
+	private Ceiling c= new Ceiling();
+	private PebbleMonster pm = new PebbleMonster(1);
+	public static void main(String[] args)
+    {
+        launch(args);
+    }
+	public void start(Stage theStage)
+	{
+        theStage.setTitle("CRYSTAL CAVERNS");
+        Group root = new Group();
+        Scene theScene = new Scene( root );
+        theStage.setScene( theScene );
+        Canvas canvas = new Canvas( 512, 512 );
+        root.getChildren().add( canvas );
+        //
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.drawImage(G.getP().getImage(), 0, 0);
+        //
+        ArrayList<String> input = new ArrayList<String>();
+        theScene.setOnKeyPressed
+        (
+        new EventHandler<KeyEvent>()
+    	{
+       		public void handle(KeyEvent e)
+                {
+                    String code = e.getCode().toString();
+                    if ( !input.contains(code) )
+                    {
+                    	input.add( code );
+                    }
+                }
+            }
+        );
+        theScene.setOnKeyReleased
+        (
+            new EventHandler<KeyEvent>()
+            {
+                public void handle(KeyEvent e)
+                {
+                    String code = e.getCode().toString();
+                    input.remove( code );
+                }
+            }
+        );
+        G.getP().setPosition(36, 380);
+        pm.setPosition(400, 400);
+        wl.setPosition(0, 0);
+        wr.setPosition(480, 0);
+        c.setPosition(0, 0);
+        f.setPosY(480);
+        input.add("go");
+        LongValue lastNanoTime = new LongValue(System.nanoTime());
+	        new AnimationTimer()
+	        {
+	        	  public void handle(long currentNanoTime)
+	        	    {
+	        	        double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+	        	        lastNanoTime.value = currentNanoTime;
+	        	        G.getP().addVelocity(0,30);
+	        	        if (input.contains("go"))
+	        	        {
+	        	        if (input.contains("LEFT"))
+	        	        {
+	        	            G.getP().addVelocity(-30,0);
+	        	        }
+	        	        if (input.contains("RIGHT"))
+	        	        {
+	        	        	G.getP().addVelocity(30,0);
+	        	        }
+	        	        if (input.contains("DOWN"))
+	        	        {
+	        	        	G.getP().addVelocity(0,30);
+	        	        }
+	        	        if(G.getP().intersects(f))
+	        	        {
+	        	        	if(G.getP().getSpdY()>0)
+	        	        	{
+	        	        		G.getP().stopfall();
+	        	        	}
+		        	        if (input.contains("SPACE"))
+		        	        {
+		        	        	G.getP().addVelocity(0, -560);
+		        	        }
+	        	        }
+	        	        }
+	        	        if(G.getP().intersects(f))
+	        	        {
+	        	        	if(G.getP().getSpdY()>0)
+	        	        	{
+	        	        		G.getP().stopfall();
+	        	        	}
+	        	        }
+	        	        if(G.getP().intersects(c))
+	        	        {
+	        	        	if(G.getP().getSpdY()<0)
+	        	        	{
+	        	        		G.getP().setSpdY(0);
+	        	        	}
+	        	        }
+	        	        if(G.getP().intersects(wl))
+	        	        {
+	        	        	if(G.getP().getSpdX()<0)
+	        	        	{
+	        	        		G.getP().setSpdX(0);
+	        	        	}
+	        	        }
+	        	        if(G.getP().intersects(wr))
+	        	        {
+	        	        	if(G.getP().getSpdX()>0)
+	        	        	{
+	        	        		G.getP().setSpdX(0);
+	        	        	}
+	        	        }
+	        	        if (G.getP().intersects(pm))
+	        	        {
+	        	        	input.remove("go");
+	        	        	Combat cp=new Combat(pm, G.getP());
+	        		        //
+	        	        	gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+	        		        Sprite attack= new Sprite();
+	        		        attack.setImage("/Pictures/Attack.png");
+	        		        attack.setPosition(0, 0);
+	        		        Sprite Defend= new Sprite();
+	        		        Defend.setImage("/Pictures/Defend.png");
+	        		        Defend.setPosition(70, 0);
+	        		        Sprite Item= new Sprite();
+	        		        Item.setImage("/Pictures/Items.png");
+	        		        Item.setPosition(140, 0);
+	        		        Sprite Inspect= new Sprite();
+	        		        Inspect.setImage("/Pictures/Inspect.png");
+	        		        Inspect.setPosition(210, 0);
+	        		        Sprite Arrow= new Sprite();
+	        		        Arrow.setImage("/Pictures/Arrow.png");
+	        		        cp.getP().addVelocity(cp.getP().getSpdX()*-1, cp.getP().getSpdY()*-1);
+	        		        cp.getP().setPosition(36, 380);
+	        		        cp.getE().setPosition(380, 380);
+	        		        LongValue lastNanoTime = new LongValue(System.nanoTime());
+	        		        new AnimationTimer()
+	        		        {
+	        		        	  public void handle(long currentNanoTime)
+	        		        	    {
+	        		        	        double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+	        		        	        lastNanoTime.value = currentNanoTime;
+	        		        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+	        		        	        f.render(gc);
+	        		        	        attack.render(gc);
+	        		        	        Defend.render(gc);
+	        		        	        Item.render(gc);
+	        		        	        Inspect.render(gc);
+	        		        	        cp.getP().render(gc);
+	        		        	        double x = 450;
+	        		        	        double y = 380;
+	        		        	        for(int i=0; i<cp.getEncounter().size();i++)
+	        		        	        {
+	        		        	        	x-=cp.getEncounter().get(i).getWidth();
+	        		        	        	cp.getEncounter().get(i).setPosition(x, y);
+	        		        	        	cp.getEncounter().get(i).render(gc);
+	        		        	        }
+	        		        	        int n=0;
+	        		        	        input.add("Pturn");
+	        		        	        if(input.contains("Pturn"))
+	        		        	        {
+	        		        	        	if(input.contains("Left"))
+	        		        	        	{
+	        		        	        		n--;
+	        		        	        		Arrow.addVelocity(-64, 0);
+	        		        	        	}
+	        		        	        	if(input.contains("Right"))
+	        		        	        	{
+	        		        	        		n++;
+	        		        	        		Arrow.addVelocity(+64, 0);
+	        		        	        	}
+	        		        	        	if(n>cp.getEncounter().size())
+	        		        	        	{
+	        		        	        		n=cp.getEncounter().size();
+	        		        	        	}
+	        		        	        	if(Arrow.getPosX()==(cp.getEncounter().get(n).getPosX())&&Arrow.getPosY() == cp.getEncounter().get(n).getPosY()-cp.getEncounter().get(n).getHeight())
+	        		        	        	{
+	        		        	        		Arrow.setVelocity(0, 0);
+	        		        	        	}
+	        		        	        	Arrow.update(elapsedTime);
+	        		        	        	Arrow.render(gc);
+	        		        	        }
+	        		        	        String s ="select enemy "+n+cp.getEncounter().get(n).getName();
+	        		        	    }
+	        		        }.start();
+	        		        theStage.show();
+	        	        }
+	        	        G.getP().update(elapsedTime);
+	        	        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+	        	        G.getP().render(gc);
+	        	        wl.render(gc);
+	        	        wr.render(gc);
+	        	        c.render(gc);
+	        	        f.render(gc);
+	        	        pm.render(gc);
+	            }
+	        }.start();
+	        theStage.show();
+	    }
+	}

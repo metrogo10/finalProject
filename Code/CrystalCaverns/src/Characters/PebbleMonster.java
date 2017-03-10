@@ -1,8 +1,9 @@
 package Characters;
 public class PebbleMonster extends Enemy
 {
-	PebbleMonster(int num3)
+	public PebbleMonster(int num3)
 	{
+		this.setImage("/Pictures/pebblemonster.png");
 		if (num3>0)
 		{
 			lvl=num3;

@@ -5,15 +5,16 @@ public class Enemy extends Character
 {
 	protected Random num1 = new Random();
 	private ArrayList<Enemy> Encounter=new ArrayList();
+	boolean alive;
 	public ArrayList GenerateEncounter()
 	{
 		Enemy m1=this;
 		m1.Encounter.removeAll(Encounter);
 		Encounter.add(m1);
-		int num=num1.nextInt(3);
+		int num=num1.nextInt(2);
 		for (int i=0; i<num; i++)
 		{
-			int num2=num1.nextInt(5);
+			int num2=num1.nextInt(1)+1;
 			switch (num2) {
             case 1:  Encounter.add(new PebbleMonster(0));
                      break;
@@ -31,5 +32,9 @@ public class Enemy extends Character
 	public ArrayList<Enemy> getEncounter()
 	{
 		return Encounter;
+	}
+	public boolean isAlive()
+	{
+		return alive;
 	}
 }

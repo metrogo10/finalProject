@@ -1,0 +1,8 @@
+package scenery;
+public class floor extends platform
+{
+	public floor()
+	{
+		this.setImage("/pictures/ceiling.png");
+	}
+}

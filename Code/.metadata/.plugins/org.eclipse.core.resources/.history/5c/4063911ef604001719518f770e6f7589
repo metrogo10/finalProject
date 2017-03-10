@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" text="Crystal Caverns" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.Combat">
+  <content>
+    <AnchorPane>
+         <children>
+            <Button id="Attack" layoutX="21.0" layoutY="21.0" mnemonicParsing="false" text="Attack" />
+            <Button id="Item" layoutX="248.0" layoutY="21.0" mnemonicParsing="false" text="Item" />
+            <Button id="Special" layoutX="338.0" layoutY="21.0" mnemonicParsing="false" text="Special" />
+            <Button id="Defend" layoutX="130.0" layoutY="21.0" mnemonicParsing="false" text="Defend" />
+            <Button id="Inspect" layoutX="452.0" layoutY="21.0" mnemonicParsing="false" text="Inspect" />
+         </children></AnchorPane>
+  </content>
+</TitledPane>
