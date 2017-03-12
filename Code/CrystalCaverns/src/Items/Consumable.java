@@ -1,9 +1,10 @@
 package Items;
 import Characters.Character;
-public class Consumable 
+import controls.Sprite;
+public class Consumable extends Sprite
 {
 	protected int hp;
-	protected String Description; 
+	protected String Description;
 	public int Use(Character c)
 	{
 		return c.getHp()+hp;

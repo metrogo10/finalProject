@@ -14,7 +14,7 @@ public class gameEngine
 	private Player p;
 	public gameEngine()
 	{
-//		String x=prompt();
+		//String x=prompt();
 		Enemy e= new Enemy();
 		p= new Player("Jack");
 		System.out.println(p.getName());

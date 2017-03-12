@@ -1,0 +1,124 @@
+package Characters;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import Gear.Pendant;
+import Items.Consumable;
+import Math.IntValue;
+public class Player extends Character
+{
+	private boolean alive;
+	private int lck;
+	private double jmp;
+	private IntValue timer=new IntValue(0);
+	//pendant power is used to equip pendants
+	private int pp;
+	private ArrayList<Pendant> equipedPendants;
+	private ArrayList<Consumable> ItemInventory = new Arraylist<consumable>;
+	private ArrayList<Pendant> pendantInventory;
+	public Player(String name)
+	{
+		lvl=1;
+		hp=10;
+		gp=5;
+		cp=1;
+		spd=2;
+		atk=2;
+		def=2;
+		exp=0;
+		lck=1;
+		jmp=1;
+		Name=name;
+		this.setImage("/Pictures/player.png");
+		this.setPosition(0, 0);
+		this.setSize(100, 100);
+	}
+	public void getEquipedPendants()
+	{
+		if(equipedPendants!=null)
+		{
+		for(int i=0; i<equipedPendants.size(); i++)
+		{
+			// change to screen display later
+			System.out.println(equipedPendants.get(i));
+		}
+		}
+	}
+	public void setEquipedPendants(Pendant Pendant)
+	{
+		equipedPendants.add(Pendant);
+	}
+	public void unEquipPendant(Pendant pendant)
+	{
+		equipedPendants.remove(pendant);
+	}
+	public Consumable getItemInventory()
+	{
+		if(ItemInventory!=null)
+		{
+			return ItemInventory.get(0);
+//		for(int i=0; i<ItemInventory.size(); i++)
+//		{
+//			// change to screen display later
+//			System.out.println(ItemInventory.get(i))
+//		}
+		}
+		return null;
+	}
+	public void setItemInventory(Consumable item)
+	{
+		ItemInventory.add(item);
+	}
+	public void dropItem(Consumable Item)
+	{
+		ItemInventory.remove(Item);
+	}
+	public void getPendantInventory()
+	{
+		if(pendantInventory!=null)
+		{
+		for(int i=0; i<pendantInventory.size(); i++)
+		{
+			// change to screen display later
+			System.out.println(pendantInventory.get(i));
+		}
+		}
+	}
+	public void setPendantInventory(Pendant pendant)
+	{
+		pendantInventory.add(pendant);
+	}
+	public void dropPendant(Pendant pendant)
+	{
+		pendantInventory.remove(pendant);
+	}
+	public void GainExp(int xp)
+	{
+		this.exp+=xp;
+		if(this.exp>=100)
+		{
+			this.exp-=100;
+			this.lvl+=1;
+			LevelUp();
+		}
+	}
+	private void LevelUp()
+	{
+		System.out.println("Choose one to increase");
+		System.out.println("Health=1");
+		System.out.println("GemPower");
+		System.out.println("Pendant Points");
+	}
+	public void stopfall()
+	{
+		this.setSpdY(0);
+	}
+	public boolean isalive()
+	{
+		return alive;
+	}
+	public void setAlive(boolean alive)
+	{
+		this.alive = alive;
+	}
+}

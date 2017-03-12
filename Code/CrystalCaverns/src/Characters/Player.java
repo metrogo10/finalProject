@@ -13,9 +13,9 @@ public class Player extends Character
 	private IntValue timer=new IntValue(0);
 	//pendant power is used to equip pendants
 	private int pp;
-	private ArrayList<Pendant> equipedPendants;
-	private ArrayList<Consumable> ItemInventory;
-	private ArrayList<Pendant> pendantInventory;
+	private ArrayList<Pendant> equipedPendants= new ArrayList<Pendant>();
+	private ArrayList<Consumable> ItemInventory = new ArrayList<Consumable>();
+	private ArrayList<Pendant> pendantInventory = new ArrayList<Pendant>();
 	public Player(String name)
 	{
 		lvl=1;
@@ -54,7 +54,7 @@ public class Player extends Character
 	}
 	public Consumable getItemInventory()
 	{
-		if(ItemInventory!=null)
+		if(ItemInventory.get(0)!=null)
 		{
 			return ItemInventory.get(0);
 //		for(int i=0; i<ItemInventory.size(); i++)
@@ -108,10 +108,6 @@ public class Player extends Character
 		System.out.println("Health=1");
 		System.out.println("GemPower");
 		System.out.println("Pendant Points");
-	}
-	public void stopfall()
-	{
-		this.setSpdY(0);
 	}
 	public boolean isalive()
 	{
